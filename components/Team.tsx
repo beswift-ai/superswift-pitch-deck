@@ -54,25 +54,22 @@ const Team: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 flex-1 min-h-0 overflow-hidden mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 mb-12">
           {members.map((member, i) => (
-            <div key={i} className="group flex flex-col min-h-0 h-full">
-              {/* Massive image container filling available island space */}
-              <div className="flex-[3] relative overflow-hidden rounded-[3rem] lg:rounded-[5rem] border-2 border-white/5 bg-white/5 mb-8 shadow-3xl p-1 pb-0 transition-all group-hover:border-[#FF4D2A]/40">
-                <div className="w-full h-full overflow-hidden rounded-[2.8rem] lg:rounded-[4.8rem] rounded-b-none flex items-end">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover object-bottom scale-[1.5] grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 group-hover:scale-[1.7] transition-all duration-[2000ms] block"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-${i === 0 ? '1507003211169-0a1dd7228f2d' : i === 1 ? '1573496359142-b8d87734a5a2' : '1519085360753-af0119f7cbe7'}?auto=format&fit=crop&q=80&w=800`;
-                    }}
-                  />
-                </div>
+            <div key={i} className="group">
+              <div className="relative overflow-hidden rounded-[3rem] lg:rounded-[5rem] rounded-b-none border-2 border-b-0 border-white/5 bg-white/5 mb-8 shadow-3xl transition-all group-hover:border-[#FF4D2A]/40 aspect-[4/5]">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="absolute inset-0 w-full h-full object-cover object-bottom grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-[2000ms]"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-${i === 0 ? '1507003211169-0a1dd7228f2d' : i === 1 ? '1573496359142-b8d87734a5a2' : '1519085360753-af0119f7cbe7'}?auto=format&fit=crop&q=80&w=800`;
+                  }}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050A18]/95 via-[#050A18]/20 to-transparent opacity-80 pointer-events-none"></div>
               </div>
-              
-              <div className="shrink-0 pb-4 px-4">
+
+              <div className="px-4">
                 <h4 className="text-3xl lg:text-4xl font-black tracking-tight mb-1 group-hover:text-[#FF4D2A] transition-colors">{member.name}</h4>
                 <div className="text-[#FF4D2A] text-[11px] font-black uppercase tracking-[0.4em] mb-4">{member.role}</div>
                 <div className="space-y-2">
