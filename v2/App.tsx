@@ -6,6 +6,7 @@ import MonitorSlide from './components/MonitorSlide';
 import SynthesizeSlide from './components/SynthesizeSlide';
 import StrategizeSlide from './components/StrategizeSlide';
 import DeliverSlide from './components/DeliverSlide';
+import CollectiveSlide from './components/CollectiveSlide';
 
 const slides = [
   { id: 'title', component: TitleSlide },
@@ -15,6 +16,7 @@ const slides = [
   { id: 'synthesize', component: SynthesizeSlide },
   { id: 'strategize', component: StrategizeSlide },
   { id: 'deliver', component: DeliverSlide },
+  { id: 'collective', component: CollectiveSlide },
 ];
 
 const App: React.FC = () => {
@@ -30,6 +32,19 @@ const App: React.FC = () => {
     };
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
+  }, [next, prev]);
+
+  // Touch swipe support
+  useEffect(() => {
+    let startX = 0;
+    const onStart = (e: TouchEvent) => { startX = e.touches[0].clientX; };
+    const onEnd = (e: TouchEvent) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 50) dx < 0 ? next() : prev();
+    };
+    window.addEventListener('touchstart', onStart);
+    window.addEventListener('touchend', onEnd);
+    return () => { window.removeEventListener('touchstart', onStart); window.removeEventListener('touchend', onEnd); };
   }, [next, prev]);
 
   const Active = slides[currentSlide].component;
@@ -54,7 +69,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Click navigation zones */}
-      <div className="fixed inset-y-0 left-0 w-24 z-40 cursor-w-resize" onClick={prev} />
+      <div className="fixed inset-y-0 left-0 w-16 z-40 cursor-w-resize" onClick={prev} />
       <div className="fixed inset-y-0 right-0 w-24 z-40 cursor-e-resize" onClick={next} />
     </div>
   );
