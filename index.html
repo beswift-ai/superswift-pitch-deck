@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SuperSwift Pitch Decks</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; background: #050A18; color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .container { text-align: center; }
+    h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .subtitle { color: rgba(255,255,255,0.5); margin-bottom: 3rem; }
+    .versions { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+    a.card { display: block; padding: 2.5rem 3rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; text-decoration: none; color: white; transition: all 0.2s; background: rgba(255,255,255,0.03); }
+    a.card:hover { border-color: #FF4D2A; background: rgba(255,77,42,0.05); transform: translateY(-2px); }
+    .card h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .card p { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+    .tag { display: inline-block; font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .tag.original { background: rgba(255,255,255,0.1); }
+    .tag.ecr { background: rgba(255,77,42,0.2); color: #FF4D2A; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ SuperSwift</h1>
+    <p class="subtitle">Pitch Deck Versions</p>
+    <div class="versions">
+      <a class="card" href="./v1/">
+        <span class="tag original">Original</span>
+        <h2>V1 — General</h2>
+        <p>6-slide overview deck</p>
+      </a>
+      <a class="card" href="./v2/">
+        <span class="tag ecr">ECR 2026</span>
+        <h2>V2 — ECR Vienna</h2>
+        <p>7-slide pillar deck with live UI mockups</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
