@@ -24,7 +24,9 @@ const pillars = [
 ];
 
 const PillarLayout: React.FC<Props> = ({ pillar, tagline, color, pillarIndex, features, children }) => (
-  <div className="h-full w-full flex relative">
+  <div className="h-full w-full flex relative justify-center">
+    {/* Centering wrapper for large screens */}
+    <div className="h-full w-full max-w-[1600px] flex relative">
     {/* Pillar side nav */}
     <div className="absolute left-0 top-0 bottom-0 w-12 flex flex-col items-center justify-center gap-1 z-20">
       {pillars.map((p, i) => (
@@ -80,7 +82,7 @@ const PillarLayout: React.FC<Props> = ({ pillar, tagline, color, pillarIndex, fe
 
     {/* Right: visualization */}
     <div className="w-[58%] flex items-center justify-center pr-12">
-      <div className="w-full max-w-[600px] h-[460px] rounded-2xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md overflow-hidden relative">
+      <div className="w-full max-w-[700px] h-[520px] rounded-2xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md overflow-hidden relative">
         <div className="h-8 border-b border-white/[0.06] flex items-center px-4 gap-2">
           <div className="w-2.5 h-2.5 rounded-full" style={{ background: `${color}60` }} />
           <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
@@ -91,6 +93,7 @@ const PillarLayout: React.FC<Props> = ({ pillar, tagline, color, pillarIndex, fe
           {children}
         </div>
       </div>
+    </div>
     </div>
   </div>
 );
